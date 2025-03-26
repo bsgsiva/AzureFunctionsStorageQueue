@@ -9,10 +9,16 @@ namespace AzureFunctionPOC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         static readonly HttpClient httpClient = new HttpClient();
+     
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
         // http://localhost:7214/api/OnSalesUploadWriteToQueue
         [HttpPost]
@@ -22,6 +28,7 @@ namespace AzureFunctionPOC.Controllers
             using (var content = new StringContent(JsonConvert.SerializeObject(salesRequest),
                 System.Text.Encoding.UTF8, "application/json"))
             {
+                httpClient.Timeout = TimeSpan.FromMinutes(2);
                 HttpResponseMessage response = await httpClient.PostAsync("http://localhost:7214/api/OnSalesUploadWriteToQueue", content);
                 string returnValue = response.Content.ReadAsStringAsync().Result;
             }
