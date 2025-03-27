@@ -1,8 +1,11 @@
+using Azure.Storage.Blobs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+var blobconnectionString = builder.Configuration.GetValue<string>("AzureWebJobsStorage");
+builder.Services.AddSingleton(new BlobServiceClient(blobconnectionString));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

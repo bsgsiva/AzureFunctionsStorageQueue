@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionPOC", "AzureFunctionPOC\AzureFunctionPOC.csproj", "{F124BBE4-5119-4507-A989-4FEA4C00F4E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionPOC", "AzureFunctionPOC\AzureFunctionPOC.csproj", "{F124BBE4-5119-4507-A989-4FEA4C00F4E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureFunctionExample", "AzureFunctionExample", "{A6027945-499E-4352-80AF-CC3D92320B91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureFunctionAppd", "AzureFunctionAppd\AzureFunctionAppd.csproj", "{5EDE0D47-71CF-457C-89FF-D3D9489D692D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureFunctionAppd", "AzureFunctionAppd\AzureFunctionAppd.csproj", "{5EDE0D47-71CF-457C-89FF-D3D9489D692D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

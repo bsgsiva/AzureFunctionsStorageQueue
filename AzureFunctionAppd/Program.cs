@@ -7,17 +7,20 @@ using Microsoft.Azure.Functions.Worker.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using AzureFunctionAppd.Data;
+using Azure.Storage.Blobs;
 
 var builder = FunctionsApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("local.settings.json", optional: true, reloadOnChange: true);
 builder.Configuration.AddEnvironmentVariables();
 var connectionString = builder.Configuration.GetValue<string>("AzureSqlDatabase");
+
 if (string.IsNullOrEmpty(connectionString))
 {
     throw new InvalidOperationException("Azure SQL Connection string is missing");
 }
 builder.Services.AddDbContext<AzureDbContext>(options => options.UseSqlServer(connectionString));
-
+var blobconnectionString = builder.Configuration.GetValue<string>("AzureWebJobsStorage");
+builder.Services.AddSingleton(new BlobServiceClient(blobconnectionString));
 
 builder.ConfigureFunctionsWebApplication();
 
