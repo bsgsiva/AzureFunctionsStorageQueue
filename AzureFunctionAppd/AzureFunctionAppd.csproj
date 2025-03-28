@@ -7,6 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="local.settings.json" />
+  </ItemGroup>
+  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Azure.Storage.Queues" Version="12.22.0" />
     <!-- Application Insights isn't enabled by default. See https://aka.ms/AAt8mw4. -->
@@ -22,7 +25,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.10" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

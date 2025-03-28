@@ -23,7 +23,7 @@ namespace AzureFunctionAppd
         {
             _logger = logger;
             string connectionString = Environment.GetEnvironmentVariable("AzureWebJobsStorage");
-            _queueClient = new QueueClient(connectionString, "azurerequestinbound", new QueueClientOptions
+            _queueClient = new QueueClient(connectionString, "azurerequestinbound2", new QueueClientOptions
             {
                 MessageEncoding= QueueMessageEncoding.Base64
             });//Connection string from portal and queue name

@@ -22,7 +22,7 @@ namespace AzureFunctionAppd
 
 
         [Function(nameof(QueueTriggerUpdateDatabase))]
-        public void Run([QueueTrigger("azurerequestinbound", Connection = "AzureWebJobsStorage")] SalesRequest myQueueItem)
+        public void Run([QueueTrigger("azurerequestinbound2", Connection = "AzureWebJobsStorage")] SalesRequest myQueueItem)
         {
             try
             {

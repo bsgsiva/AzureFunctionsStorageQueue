@@ -9,6 +9,8 @@ namespace AzureFunctionAppd
     {
         private readonly ILogger<ResizeImageWriteToDb> _logger;
 
+
+
         public ResizeImageWriteToDb(ILogger<ResizeImageWriteToDb> logger)
         {
             _logger = logger;

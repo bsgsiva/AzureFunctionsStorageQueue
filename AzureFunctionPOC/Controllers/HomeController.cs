@@ -39,6 +39,7 @@ namespace AzureFunctionPOC.Controllers
             if (file != null)
             {
                 var fileName = salesRequest.Id + Path.GetExtension(file.FileName);
+               
                 BlobContainerClient blobContainerClient = _blobServiceClient.GetBlobContainerClient("hextcontainer");
                 var blobClient = blobContainerClient.GetBlobClient(fileName);
 

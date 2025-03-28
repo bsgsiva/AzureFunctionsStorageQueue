@@ -28,15 +28,22 @@ namespace AzureFunctionAppd
             using var blobStreamReader = new StreamReader(stream);
             var content = await blobStreamReader.ReadToEndAsync();
             _logger.LogInformation($"C# Blob trigger function Processed blob\n Name: {name} \n Data: {content}");
+            stream.Position = 0;
+            _logger.LogInformation(stream.Length.ToString()?? "null");
 
-            using (Image<Rgba32> image = Image.Load<Rgba32>(stream))
+            using (Image<Rgba32> image = Image.Load<Rgba32>(stream,out  IImageFormat format))
             {
                 image.Mutate(x => x.Resize(50, 50));
                 var outputContainer = _blobServiceClient.GetBlobContainerClient("hextcontainer-output");
                 var outputBlobClient = outputContainer.GetBlobClient(name);
-                using(var outputStream = new MemoryStream())
+                using (var outputStream = new MemoryStream())
                 {
-                    image.SaveAsJpeg(outputStream);
+                    //var format = image.Metadata.DecodedImageFormat;
+                    image.Save(outputStream, format);
+                    //if (format.Name == "JPEG")
+                    //    image.SaveAsJpeg(outputStream);
+                    //else if (format.Name == "PNG")
+                    //    image.SaveAsPng(outputStream);
                     outputStream.Position = 0;
                     await outputBlobClient.UploadAsync(outputStream, true);
 
